@@ -2,6 +2,7 @@ package es.smarting.rickmortyapp.di
 
 import es.smarting.rickmortyapp.data.RepositoryImpl
 import es.smarting.rickmortyapp.data.remote.ApiService
+import es.smarting.rickmortyapp.data.remote.paging.CharacterPagingSource
 import es.smarting.rickmortyapp.domain.Repository
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.DefaultRequest
@@ -33,4 +34,6 @@ val dataModule = module {
     factoryOf(::ApiService)
     factoryOf(::RepositoryImpl).bind(Repository::class)
     //factory <Repository> { RepositoryImpl(get())  }
+
+    factoryOf(::CharacterPagingSource)
 }

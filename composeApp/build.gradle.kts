@@ -63,7 +63,18 @@ kotlin {
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.negotiation)
             implementation(libs.kotlin.serialization)
-            
+
+            //ViewModel
+            implementation(libs.viewmodel.compose)
+
+            //Coil
+            implementation(libs.coil.compose)
+            implementation(libs.coil.network.ktor)
+
+            //Paging3
+            implementation(libs.paging.common)
+            implementation(libs.paging.compose.common)
+
 
         }
         iosMain.dependencies {

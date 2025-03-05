@@ -16,12 +16,13 @@ junit = "4.13.2"
 kotlin = "2.1.0"
 navigation = "2.8.0-alpha12"
 serialization = "1.8.0"
-
 koin = "4.0.2"
 koinCompose = "4.0.2"
 koinComposeViewModel = "4.0.2"
-
-ktor = "2.3.12"
+ktor = "3.0.3"
+viewmodel = "2.8.4"
+coil = "3.1.0"
+pagingComposeCommon="3.3.0-alpha02-0.4.0"
 
 
 [libraries]
@@ -52,6 +53,17 @@ ktor-client-negotiation = { module = "io.ktor:ktor-client-content-negotiation", 
 ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
 ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
 kotlin-serialization = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+
+#ViewModel
+viewmodel-compose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "viewmodel" }
+
+#Coil para cargar images de
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
+coil-network-ktor = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coil" }
+
+#Paging3
+paging-common = { module= "app.cash.paging:paging-common", version.ref= "pagingComposeCommon"}
+paging-compose-common = { module= "app.cash.paging:paging-compose-common", version.ref= "pagingComposeCommon"}
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

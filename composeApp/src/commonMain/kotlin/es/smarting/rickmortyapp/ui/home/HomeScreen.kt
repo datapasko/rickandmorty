@@ -1,6 +1,7 @@
 package es.smarting.rickmortyapp.ui.home
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -8,9 +9,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.navigation.NavDestination
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavDestination.Companion.hierarchy
-import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
@@ -29,9 +29,9 @@ fun HomeScreen() {
 
     Scaffold (
         bottomBar = { BottomNavigation(navItemList, navController) }
-    ) {
+    ) { padding ->
 
-        Box {
+        Box (modifier = Modifier.padding(padding)) {
             NavigationBottomWrapper(navController)
         }
 
@@ -51,8 +51,10 @@ fun BottomNavigation(navItemList: List<BottomBarItem>, navController: NavHostCon
                 label = { Text(item.title) },
                 onClick = {
                     navController.navigate(item.route){
-                        popUpTo(navController.graph.findStartDestination().id){
-                            saveState = true
+                        navController.graph.startDestinationRoute?.let {
+                            popUpTo(it) {
+                                saveState = true
+                            }
                         }
                         launchSingleTop = true
                         restoreState = true
