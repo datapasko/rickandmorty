@@ -1,4 +1,3 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -8,6 +7,8 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.kotlinxSerialization)
+    alias(libs.plugins.room)
+    alias(libs.plugins.ksp)
 }
 
 kotlin {
@@ -75,6 +76,13 @@ kotlin {
             implementation(libs.paging.common)
             implementation(libs.paging.compose.common)
 
+            //Datetime
+            implementation(libs.kotlinx.datetime)
+
+            //Room
+            implementation(libs.room.runtime)
+            implementation(libs.androidx.sqlite.bundled)
+
 
         }
         iosMain.dependencies {
@@ -113,7 +121,12 @@ android {
     }
 }
 
+room {
+    schemaDirectory("$projectDir/schemas")
+}
+
 dependencies {
+    ksp(libs.room.compiler)
     debugImplementation(compose.uiTooling)
 }
 

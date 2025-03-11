@@ -13,7 +13,8 @@ fun initKoin(configuration: KoinAppDeclaration? = null){
             dataModule,
             domainModule,
             uiModule,
-            platformModule()
+            platformModule(),
+            databaseModule()
         )
     }
 }

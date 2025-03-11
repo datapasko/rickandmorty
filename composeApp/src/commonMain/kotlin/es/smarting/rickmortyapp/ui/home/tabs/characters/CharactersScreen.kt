@@ -62,14 +62,23 @@ fun CharacterGridList(characters: LazyPagingItems<CharacterModel>, state: Charac
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ){
 
+
+
         item ( span = { GridItemSpan(2) }) {
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
-                CharacterOfDay(state.characterOfDay)
+            Column {
+
+                Text("Characters", color = Color.Black, fontSize = 24.sp)
+
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    CharacterOfDay(state.characterOfDay)
+                }
             }
+
         }
+
 
         when {
             //Load init

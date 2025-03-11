@@ -3,15 +3,19 @@ package es.smarting.rickmortyapp.data
 import app.cash.paging.Pager
 import app.cash.paging.PagingConfig
 import app.cash.paging.PagingData
+import es.smarting.rickmortyapp.data.database.RickMortyDatabase
+import es.smarting.rickmortyapp.data.database.entity.CharacterEntity
 import es.smarting.rickmortyapp.data.remote.ApiService
 import es.smarting.rickmortyapp.data.remote.paging.CharacterPagingSource
 import es.smarting.rickmortyapp.domain.Repository
 import es.smarting.rickmortyapp.domain.model.CharacterModel
+import es.smarting.rickmortyapp.domain.model.CharacterOfTheDayModel
 import kotlinx.coroutines.flow.Flow
 
 class RepositoryImpl(
     private val api:ApiService,
-    private val characterPagingSource: CharacterPagingSource
+    private val characterPagingSource: CharacterPagingSource,
+    private val rickMortyDatabase: RickMortyDatabase
 ):Repository {
 
     companion object {
@@ -27,5 +31,13 @@ class RepositoryImpl(
             config = PagingConfig(pageSize = MAX_ITEMS, prefetchDistance = PREFETCH_ITEMS),
             pagingSourceFactory = {characterPagingSource}
         ).flow
+    }
+
+    override suspend fun getCharacterDB(): CharacterOfTheDayModel? {
+        return rickMortyDatabase.getPreferencesDAO().getCharacters()?.toDomain()
+    }
+
+    override suspend fun saveCharacter(characterOfTheDayModel: CharacterOfTheDayModel) {
+        rickMortyDatabase.getPreferencesDAO().saveCharacter(characterEntity = characterOfTheDayModel.toEntity())
     }
 }
