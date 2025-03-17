@@ -2,6 +2,7 @@ package es.smarting.rickmortyapp.data.remote
 
 import es.smarting.rickmortyapp.data.remote.response.CharacterResponse
 import es.smarting.rickmortyapp.data.remote.response.CharacterWrapperResponse
+import es.smarting.rickmortyapp.data.remote.response.EpisodesWrapperResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
@@ -16,6 +17,12 @@ class ApiService(
 
     suspend fun getAllCharacters(page:Int): CharacterWrapperResponse {
         return client.get("/character"){
+            parameter("page", page)
+        }.body()
+    }
+
+    suspend fun getAllEpisodes(page: Int): EpisodesWrapperResponse {
+        return client.get("/episode"){
             parameter("page", page)
         }.body()
     }
