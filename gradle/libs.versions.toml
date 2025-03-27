@@ -25,10 +25,12 @@ coil = "3.1.0"
 pagingComposeCommon="3.3.0-alpha02-0.4.0"
 kotlinxDatetime="0.6.1"
 
+sqlite = "2.5.0-rc02"
 
-androidx-room = "2.7.0-rc01"
 
-roomCommon="2.7.0-rc01"
+androidx-room = "2.7.0-rc02"
+
+roomCommon="2.7.0-rc02"
 ksp="2.1.10-1.0.29"
 androidx-sqliteBundled="2.5.0-rc01"
 
@@ -79,7 +81,7 @@ kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "roomCommon" }
 room-runtime-android = { group = "androidx.room", name = "room-runtime-android", version.ref = "roomCommon" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomCommon" }
-androidx-sqlite-bundled = { group = "androidx.sqlite", name = "sqlite-bundled", version.ref = "androidx-sqliteBundled" }
+sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

@@ -21,8 +21,8 @@ import es.smarting.rickmortyapp.ui.core.navigation.bottom.NavigationBottomWrappe
 fun HomeScreen() {
 
     val navItemList = listOf(
-        BottomBarItem.Characters(),
-        BottomBarItem.Episodes()
+        BottomBarItem.Episodes(),
+        BottomBarItem.Characters()
     )
 
     val navController = rememberNavController()

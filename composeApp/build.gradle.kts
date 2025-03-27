@@ -13,7 +13,6 @@ plugins {
 
 kotlin {
     androidTarget {
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_11)
         }
@@ -81,7 +80,7 @@ kotlin {
 
             //Room
             implementation(libs.room.runtime)
-            implementation(libs.androidx.sqlite.bundled)
+            implementation(libs.sqlite.bundled)
 
 
         }

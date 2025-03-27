@@ -16,7 +16,7 @@ fun NavigationBottomWrapper (
 ){
     NavHost(
         navController = navController,
-        startDestination = Routes.Characters.route
+        startDestination = Routes.Episodes.route
     ) {
 
         composable(Routes.Characters.route) {

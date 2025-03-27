@@ -12,17 +12,17 @@ class ApiService(
     private val client: HttpClient
 ) {
     suspend fun getSingleCharacter(id: String): CharacterResponse {
-        return client.get("/character/$id").body()
+        return client.get("/api/character/$id").body()
     }
 
     suspend fun getAllCharacters(page:Int): CharacterWrapperResponse {
-        return client.get("/character"){
+        return client.get("/api/character"){
             parameter("page", page)
         }.body()
     }
 
     suspend fun getAllEpisodes(page: Int): EpisodesWrapperResponse {
-        return client.get("/episode"){
+        return client.get("/api/episode"){
             parameter("page", page)
         }.body()
     }

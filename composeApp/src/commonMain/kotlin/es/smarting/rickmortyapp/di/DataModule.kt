@@ -25,7 +25,7 @@ val dataModule = module {
             install(DefaultRequest) {
                 url{
                     protocol = URLProtocol.HTTPS
-                    host = "rickandmortyapi.com/api/"
+                    host = "rickandmortyapi.com"
                     //parameters.append("key", "")
                 }
             }

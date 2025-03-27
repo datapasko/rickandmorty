@@ -27,14 +27,14 @@ data class EpisodeResponse(
 
     private fun getVideoUrlFromSeason(season: SeasonEpisode): String {
         return when (season) {
-            SEASON_1 -> "https://www.youtube.com/watch?v=8BEzj2kRjO8&ab_channel=RottenTomatoesTV"
-            SEASON_2 -> "https://www.youtube.com/watch?v=SXwf_9xJu5c&ab_channel=Yusuto"
-            SEASON_3 -> "https://www.youtube.com/watch?v=Bmg2vXOQ3kM&ab_channel=SeriesTrailerMP"
-            SEASON_4 -> "https://www.youtube.com/watch?v=bLI2-v264No&ab_channel=RottenTomatoesTV"
-            SEASON_5 -> "https://www.youtube.com/watch?v=yC1UxW8vcDo&ab_channel=RottenTomatoesTV"
-            SEASON_6 -> "https://www.youtube.com/watch?v=jerFRSQW9g8&ab_channel=RottenTomatoesTV"
-            SEASON_7 -> "https://www.youtube.com/watch?v=PkZtVBNkmso&ab_channel=RottenTomatoesTV"
-            UNKNOWN -> "https://www.youtube.com/watch?v=8BEzj2kRjO8&ab_channel=RottenTomatoesTV"
+            SEASON_1 -> "https://firebasestorage.googleapis.com/v0/b/rickmortykmp-e1321.firebasestorage.app/o/trailer_rick_morty.mp4?alt=media&token=c147f11c-5d38-4673-a5da-a298b63e5b05"
+            SEASON_2 -> "https://firebasestorage.googleapis.com/v0/b/rickmortykmp-e1321.firebasestorage.app/o/trailer_rick_morty.mp4?alt=media&token=c147f11c-5d38-4673-a5da-a298b63e5b05"
+            SEASON_3 -> "https://firebasestorage.googleapis.com/v0/b/rickmortykmp-e1321.firebasestorage.app/o/trailer_rick_morty.mp4?alt=media&token=c147f11c-5d38-4673-a5da-a298b63e5b05"
+            SEASON_4 -> "https://firebasestorage.googleapis.com/v0/b/rickmortykmp-e1321.firebasestorage.app/o/trailer_rick_morty.mp4?alt=media&token=c147f11c-5d38-4673-a5da-a298b63e5b05"
+            SEASON_5 -> "https://firebasestorage.googleapis.com/v0/b/rickmortykmp-e1321.firebasestorage.app/o/trailer_rick_morty.mp4?alt=media&token=c147f11c-5d38-4673-a5da-a298b63e5b05"
+            SEASON_6 -> "https://firebasestorage.googleapis.com/v0/b/rickmortykmp-e1321.firebasestorage.app/o/trailer_rick_morty.mp4?alt=media&token=c147f11c-5d38-4673-a5da-a298b63e5b05"
+            SEASON_7 -> "https://firebasestorage.googleapis.com/v0/b/rickmortykmp-e1321.firebasestorage.app/o/trailer_rick_morty.mp4?alt=media&token=c147f11c-5d38-4673-a5da-a298b63e5b05"
+            UNKNOWN -> "https://firebasestorage.googleapis.com/v0/b/rickmortykmp-e1321.firebasestorage.app/o/trailer_rick_morty.mp4?alt=media&token=c147f11c-5d38-4673-a5da-a298b63e5b05"
         }
     }
 
@@ -49,6 +49,5 @@ data class EpisodeResponse(
             episode.startsWith("S07") -> SEASON_7
             else -> UNKNOWN
         }
-
     }
 }

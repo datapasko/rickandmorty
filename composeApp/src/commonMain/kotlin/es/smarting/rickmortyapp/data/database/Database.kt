@@ -4,6 +4,7 @@ import androidx.room.ConstructedBy
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.RoomDatabaseConstructor
+import androidx.room.TypeConverters
 import es.smarting.rickmortyapp.data.database.dao.UserPreferencesDAO
 import es.smarting.rickmortyapp.data.database.entity.CharacterEntity
 
@@ -20,7 +21,6 @@ abstract class RickMortyDatabase: RoomDatabase() {
     abstract fun getPreferencesDAO(): UserPreferencesDAO
 }
 
-@Suppress("NO_ACTUAL_FOR_EXPECT")
 expect object AppDatabaseConstructor : RoomDatabaseConstructor<RickMortyDatabase> {
     override fun initialize(): RickMortyDatabase
 }
