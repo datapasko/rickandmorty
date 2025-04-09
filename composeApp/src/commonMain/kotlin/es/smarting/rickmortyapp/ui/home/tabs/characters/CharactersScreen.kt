@@ -45,15 +45,21 @@ import rickmortyapp.composeapp.generated.resources.Res
 import rickmortyapp.composeapp.generated.resources.rick_face
 
 @Composable
-fun CharactersScreen () {
+fun CharactersScreen(
+    navigateToDetail: (Int) -> Unit
+) {
     val charactersViewModel = koinViewModel<CharactersViewModel>()
     val state by charactersViewModel.state.collectAsState()
     val characters = state.characters.collectAsLazyPagingItems()
-    CharacterGridList(characters, state)
+    CharacterGridList(characters, state, navigateToDetail)
 }
 
 @Composable
-fun CharacterGridList(characters: LazyPagingItems<CharacterModel>, state: CharactersState ) {
+fun CharacterGridList(
+    characters: LazyPagingItems<CharacterModel>,
+    state: CharactersState,
+    navigateToDetail: (Int) -> Unit
+) {
     LazyVerticalGrid(
         modifier = Modifier.fillMaxSize()
             .padding(horizontal = 16.dp),
@@ -104,7 +110,9 @@ fun CharacterGridList(characters: LazyPagingItems<CharacterModel>, state: Charac
 
                 items(characters.itemCount) {
                     characters[it]?.let { characterModel ->
-                        CharacterItemList(characterModel)
+                        CharacterItemList(characterModel) { character ->
+                            navigateToDetail(character.id)
+                        }
                     }
                 }
 
@@ -124,14 +132,17 @@ fun CharacterGridList(characters: LazyPagingItems<CharacterModel>, state: Charac
 }
 
 @Composable
-fun CharacterItemList(characterModel: CharacterModel) {
+fun CharacterItemList(characterModel: CharacterModel, onItemSelected: (CharacterModel) -> Unit) {
 
     Box(
         modifier = Modifier.clip(RoundedCornerShape(24))
             .border(2.dp, Color.Green, shape = RoundedCornerShape(0,24,0,24))
             .fillMaxWidth()
             .height(150.dp)
-            .clickable {  },
+            .clickable {
+                onItemSelected(characterModel)
+            },
+
         contentAlignment = Alignment.BottomCenter
     ) {
         AsyncImage(

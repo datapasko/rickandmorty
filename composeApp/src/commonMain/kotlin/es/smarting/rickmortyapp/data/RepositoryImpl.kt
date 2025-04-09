@@ -12,6 +12,7 @@ import es.smarting.rickmortyapp.domain.Repository
 import es.smarting.rickmortyapp.domain.model.CharacterModel
 import es.smarting.rickmortyapp.domain.model.CharacterOfTheDayModel
 import es.smarting.rickmortyapp.domain.model.EpisodeModel
+import es.smarting.rickmortyapp.utils.safeApiCall
 import kotlinx.coroutines.flow.Flow
 
 class RepositoryImpl(
@@ -25,8 +26,10 @@ class RepositoryImpl(
         const val MAX_ITEMS = 20
         const val PREFETCH_ITEMS = 5
     }
-    override suspend fun getSingleCharacter(id: String): CharacterModel {
-        return api.getSingleCharacter(id).toDomain()
+    override suspend fun getSingleCharacter(id: String): Result<CharacterModel> {
+        return  safeApiCall {
+            api.getSingleCharacter(id).toDomain()
+        }
     }
 
     override fun getAllCharacters(): Flow<PagingData<CharacterModel>> {
@@ -49,5 +52,21 @@ class RepositoryImpl(
 
     override suspend fun saveCharacter(characterOfTheDayModel: CharacterOfTheDayModel) {
         rickMortyDatabase.getPreferencesDAO().saveCharacter(characterEntity = characterOfTheDayModel.toEntity())
+    }
+
+    override suspend fun getEpisodeByCharacter(episodes: List<String>): Result<List<EpisodeModel>> {
+
+        if(episodes.isEmpty())
+            return Result.success(emptyList())
+
+        return safeApiCall {
+            if (episodes.size > 1) {
+                api.getEpisodes(episodes.joinToString(",")).map { episode ->
+                    episode.toDomain()
+                }
+            } else {
+                listOf(api.getSingleEpisode(episodes.first()).toDomain())
+            }
+        }
     }
 }

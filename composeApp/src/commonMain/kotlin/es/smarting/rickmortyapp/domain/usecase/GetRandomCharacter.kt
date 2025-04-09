@@ -30,7 +30,8 @@ class GetRandomCharacter(
 
     private suspend fun generateRandomCharacter(): CharacterModel {
         val random = (1..826).random()
-        return repository.getSingleCharacter(random.toString())
+        val result = repository.getSingleCharacter(random.toString())
+        return result.getOrNull()!!
     }
 
     private fun getCurrentDayOfYear(): String {

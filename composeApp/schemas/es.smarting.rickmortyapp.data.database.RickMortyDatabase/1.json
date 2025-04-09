@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "68bc8485736dc23e59fd9b9e0a40f857",
+    "identityHash": "f1dd8b16aa99cb827662cf8bbb2f86a4",
     "entities": [
       {
         "tableName": "character",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `isAlive` INTEGER NOT NULL, `image` TEXT NOT NULL, `name` TEXT NOT NULL, `selectedDay` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `isAlive` INTEGER NOT NULL, `image` TEXT NOT NULL, `name` TEXT NOT NULL, `selectedDay` TEXT NOT NULL, `species` TEXT NOT NULL, `gender` TEXT NOT NULL, `origin` TEXT NOT NULL, `episode` TEXT NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -37,6 +37,30 @@
             "columnName": "selectedDay",
             "affinity": "TEXT",
             "notNull": true
+          },
+          {
+            "fieldPath": "species",
+            "columnName": "species",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "gender",
+            "columnName": "gender",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "origin",
+            "columnName": "origin",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "episode",
+            "columnName": "episode",
+            "affinity": "TEXT",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -49,7 +73,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '68bc8485736dc23e59fd9b9e0a40f857')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f1dd8b16aa99cb827662cf8bbb2f86a4')"
     ]
   }
 }

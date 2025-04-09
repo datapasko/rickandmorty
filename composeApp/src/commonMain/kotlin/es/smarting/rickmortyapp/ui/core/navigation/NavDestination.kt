@@ -10,3 +10,6 @@ object EpisodesNav
 
 @Serializable
 object CharactersNav
+
+@Serializable
+data class CharacterDetail( val id: Int)

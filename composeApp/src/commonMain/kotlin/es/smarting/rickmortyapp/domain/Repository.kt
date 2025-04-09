@@ -8,9 +8,10 @@ import es.smarting.rickmortyapp.domain.model.EpisodeModel
 import kotlinx.coroutines.flow.Flow
 
 interface Repository {
-    suspend fun getSingleCharacter(id:String): CharacterModel
+    suspend fun getSingleCharacter(id:String): Result<CharacterModel>
     fun getAllCharacters(): Flow<PagingData<CharacterModel>>
     fun getAllEpisodes(): Flow<PagingData<EpisodeModel>>
     suspend fun getCharacterDB(): CharacterOfTheDayModel?
     suspend fun saveCharacter(characterOfTheDayModel: CharacterOfTheDayModel)
+    suspend fun getEpisodeByCharacter(episodes: List<String>): Result<List<EpisodeModel>>
 }

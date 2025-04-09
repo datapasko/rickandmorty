@@ -18,7 +18,9 @@ import es.smarting.rickmortyapp.ui.core.navigation.bottom.BottomBarItem
 import es.smarting.rickmortyapp.ui.core.navigation.bottom.NavigationBottomWrapper
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    mainNavController: NavHostController
+) {
 
     val navItemList = listOf(
         BottomBarItem.Episodes(),
@@ -32,7 +34,7 @@ fun HomeScreen() {
     ) { padding ->
 
         Box (modifier = Modifier.padding(padding)) {
-            NavigationBottomWrapper(navController)
+            NavigationBottomWrapper(navController, mainNavController)
         }
 
     }
