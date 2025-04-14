@@ -6,6 +6,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.unit.dp
+import es.smarting.rickmortyapp.ui.core.Green
 
 fun Modifier.vertical() = layout {measurable, constraints ->
     val placeable = measurable.measure(constraints)
@@ -22,6 +23,6 @@ fun Modifier.vertical() = layout {measurable, constraints ->
 }
 
 fun Modifier.aliveBorder(isAlive: Boolean): Modifier {
-    val color = if(isAlive) Color.Green else Color.Red
+    val color = if(isAlive) Green else Color.Red
     return border(4.dp, color, CircleShape)
 }
