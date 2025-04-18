@@ -29,6 +29,7 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -38,6 +39,9 @@ import app.cash.paging.compose.LazyPagingItems
 import app.cash.paging.compose.collectAsLazyPagingItems
 import coil3.compose.AsyncImage
 import es.smarting.rickmortyapp.domain.model.CharacterModel
+import es.smarting.rickmortyapp.ui.core.BackgroundPrimaryColor
+import es.smarting.rickmortyapp.ui.core.DefaultTextColor
+import es.smarting.rickmortyapp.ui.core.Green
 import es.smarting.rickmortyapp.ui.core.ext.vertical
 import org.jetbrains.compose.resources.painterResource
 import org.koin.compose.viewmodel.koinViewModel
@@ -62,6 +66,7 @@ fun CharacterGridList(
 ) {
     LazyVerticalGrid(
         modifier = Modifier.fillMaxSize()
+            .background(BackgroundPrimaryColor)
             .padding(horizontal = 16.dp),
         columns = GridCells.Fixed(2),
         horizontalArrangement = Arrangement.spacedBy(16.dp),
@@ -73,7 +78,7 @@ fun CharacterGridList(
         item ( span = { GridItemSpan(2) }) {
             Column {
 
-                Text("Characters", color = Color.Black, fontSize = 24.sp)
+                Text("Characters", color = DefaultTextColor, fontSize = 24.sp, fontWeight = FontWeight.SemiBold)
 
                 Box(
                     modifier = Modifier.fillMaxSize(),
@@ -94,7 +99,7 @@ fun CharacterGridList(
                         modifier = Modifier.fillMaxSize(),
                         contentAlignment = Alignment.Center
                     ) {
-                        CircularProgressIndicator(Modifier.size(64.dp), color = Color.Red)
+                        CircularProgressIndicator(Modifier.size(64.dp), color = Green)
                     }
                 }
             }
@@ -122,7 +127,7 @@ fun CharacterGridList(
                             modifier = Modifier.fillMaxWidth().height(100.dp),
                             contentAlignment = Alignment.Center
                         ) {
-                            CircularProgressIndicator(Modifier.size(64.dp), color = Color.Red)
+                            CircularProgressIndicator(Modifier.size(64.dp), color = Green)
                         }
                     }
                 }
@@ -136,7 +141,7 @@ fun CharacterItemList(characterModel: CharacterModel, onItemSelected: (Character
 
     Box(
         modifier = Modifier.clip(RoundedCornerShape(24))
-            .border(2.dp, Color.Green, shape = RoundedCornerShape(0,24,0,24))
+            .border(2.dp, Green, shape = RoundedCornerShape(0,24,0,24))
             .fillMaxWidth()
             .height(150.dp)
             .clickable {
@@ -182,7 +187,7 @@ fun CharacterOfDay (characterModel: CharacterModel ?= null) {
     ) {
         if(characterModel == null) {
             Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
-                CircularProgressIndicator(color = Color.Green)
+                CircularProgressIndicator(color = Green)
             }
         }else {
             Box(contentAlignment = Alignment.BottomStart) {
